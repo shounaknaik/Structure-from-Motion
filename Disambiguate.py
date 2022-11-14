@@ -10,7 +10,7 @@ def DisambiguateCameraPose(C_all, R_all, X_all):
         for j in range(num_world_points):
             r3=R_all[i,2,:]   #[i][2,:] 
             this_image_world_points=X_all[i,:,:]
-            if (np.dot(r3,this_image_world_points[j,:]-C_all[i,:])):
+            if (np.dot(r3,this_image_world_points[j,:]-C_all[i,:]) and this_image_world_points[j,2]>=0):
                 num_points_satisfying_condtion+=1
         if num_points_satisfying_condtion>max_points:
             max_points=num_points_satisfying_condtion
